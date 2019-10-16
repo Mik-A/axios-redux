@@ -2,6 +2,24 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+Axios - https://www.npmjs.com/package/axios
+React-redux - https://www.npmjs.com/package/react-redux
+Redux - https://www.npmjs.com/package/redux
+
+Axios is a Promise based HTTP client for the browser and node.js.
+React Redux is the official Redux UI binding library for React.
+Redux is A predictable state container for JavaScript apps.
+
+## Quick start
+
+watch it in action on
+
+## https://axios-redux.netlify.com/
+
+check out the source code by cloning it to your local computer
+
+## git clone https://github.com/Mik-A/axios-redux.git
+
 In the project directory, you can run:
 
 ### `yarn start`
