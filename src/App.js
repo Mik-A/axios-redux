@@ -5,6 +5,8 @@ import axios from 'axios'
 
 import './App.css'
 
+let intialCount = 0
+
 const axiosGet = async (url, props) => {
   props.fetchData('loading...')
   try {
@@ -15,8 +17,9 @@ const axiosGet = async (url, props) => {
   }
 }
 
-const handleSingle = (single, props) => {
+const handleSingle = (single, count, props) => {
   props.singleData(single)
+  intialCount = count
 }
 
 const Galleria = props => {
@@ -45,7 +48,7 @@ const Galleria = props => {
   }
 
   const dots = splittedArr.length
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(intialCount)
 
   return (
     <Fragment>
@@ -62,7 +65,7 @@ const Galleria = props => {
           {splittedArr[count].map((x, i) => (
             <Fragment key={`key-${i}`}>
               <div
-                onClick={() => handleSingle(x, props)}
+                onClick={() => handleSingle(x, count, props)}
                 style={{
                   cursor: 'pointer'
                   // alternatively show thumbs as background images
@@ -114,11 +117,12 @@ const App = props => {
     margin: '0 auto',
     padding: 18
   }
-  console.log('props', props)
   return (
     <div style={styles}>
       {single ? (
-        <button onClick={() => handleSingle(null, props)}>Back</button>
+        <button onClick={() => handleSingle(null, single.count, props)}>
+          Back
+        </button>
       ) : (
         <button
           onClick={() =>
@@ -128,8 +132,8 @@ const App = props => {
           {Array.isArray(gallery) ? 'Call API again' : 'Fetch data!'}
         </button>
       )}
-      {single ? (
-        <Sinkku title={single.title} url={single.url} />
+      {single && single.image ? (
+        <Sinkku title={single.image.title} url={single.image.url} />
       ) : Array.isArray(gallery) ? (
         <Galleria gallery={gallery} handleSingle={props.singleData} />
       ) : (

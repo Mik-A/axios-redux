@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux'
 import { fetchData, singleData, closeSingle } from '../actions'
 
-export { fetchData, singleData, closeSingle }
-
 export const gallery = (state = 'Start by clicking fetch data', action) => {
   switch (action.type) {
     case 'API_GET':
@@ -12,9 +10,10 @@ export const gallery = (state = 'Start by clicking fetch data', action) => {
   }
 }
 export const single = (state = null, action) => {
+  const single = { image: action.single, count: action.count }
   switch (action.type) {
     case 'SINGLE_DATA':
-      return action.single
+      return single
     case 'CLOSE_SINGLE':
       return action.close
     default:
@@ -26,3 +25,5 @@ export const reducers = combineReducers({
   gallery,
   single
 })
+
+export { fetchData, singleData, closeSingle }

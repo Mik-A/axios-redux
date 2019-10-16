@@ -3,9 +3,10 @@ export const fetchData = res => ({
   res
 })
 
-export const singleData = single => ({
+export const singleData = (single, count) => ({
   type: 'SINGLE_DATA',
-  single
+  single,
+  count
 })
 
 export const closeSingle = close => ({
