@@ -119,7 +119,7 @@ const App = props => {
   }
   return (
     <div style={styles}>
-      {single ? (
+      {single && single.image ? (
         <button onClick={() => handleSingle(null, single.count, props)}>
           Back
         </button>
